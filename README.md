@@ -97,3 +97,10 @@ I was trying to run it concurrently that is why project structure is like this
 
 I was using change detector function to regenerate calendar if you don't see names of tenant on calendar and list (Refresh the page for now)
 I ll update it
+
+<br/>
+
+## DEMO
+
+https://user-images.githubusercontent.com/60398800/217885836-8ff0a566-db10-4feb-94d5-adbf1c88f9b3.mp4
+
