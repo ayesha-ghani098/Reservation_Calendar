@@ -37,7 +37,6 @@ Make sure you have installed Angular Cli 1.4.10
 ```
 npm install -g angular-cli@1.4.10
 ```
-
 <br/>
 
 ### For server
@@ -52,6 +51,7 @@ Once the dependencies are installed, you can start the application server by run
 npm start
 ```
 Once the server is running, you can start making requests to http://localhost:3000.
+
 <br/>
 
 ### For Client
