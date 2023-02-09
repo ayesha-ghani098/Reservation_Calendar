@@ -39,6 +39,7 @@ npm install -g angular-cli@1.4.10
 ```
 
 <br/>
+
 ### For server
 Install the package dependencies by running the following command in the root directory
 ```
@@ -52,6 +53,7 @@ npm start
 ```
 Once the server is running, you can start making requests to http://localhost:3000.
 <br/>
+
 ### For Client
 Install the package dependencies by running the following command in the client folder
 ```
@@ -68,6 +70,7 @@ Once the server is running, you can start making requests to http://localhost:42
 I was trying to run it concurrently that is why project structure is like this
 
 <br/>
+
 ## Task Requirements
 - A way to navigate between months.
 - A way to add tennants to a day.
@@ -81,6 +84,7 @@ I was trying to run it concurrently that is why project structure is like this
 - Feature to show the list of tennants outside for readability.
 
 <br/>
+
 ## Tasks Completed
 - A way to navigate between months.
 - A way to add tennants to a day.
