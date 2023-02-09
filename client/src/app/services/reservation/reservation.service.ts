@@ -2,13 +2,15 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { take } from "rxjs/operators";
 
+import { UtilityService } from "../utility/utility.service";
+
 @Injectable()
 export class ReservationService {
   data: any;
   serverTime: any;
   private baseUrl = "http://localhost:3000";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private utility: UtilityService) {}
 
   // RESERVE
   async reserve(tennantName: string, time: number) {
@@ -19,7 +21,6 @@ export class ReservationService {
           time,
           reserved: true,
         })
-        .subscribe();
     } catch (err) {
       console.log(err);
     }
@@ -28,13 +29,12 @@ export class ReservationService {
   // UNRESERVE
   unReserve(tennantName: string, time: number) {
     try {
-      this.http
+      return this.http
         .post(`${this.baseUrl}/reserve`, {
           tennantName,
           time,
           reserved: false,
         })
-        .subscribe();
     } catch (err) {
       console.log(err);
     }

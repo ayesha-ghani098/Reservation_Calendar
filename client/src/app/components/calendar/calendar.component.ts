@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import { Component, OnInit } from "@angular/core";
+import * as moment from "moment";
 
 // Services
-import { ReservationService } from '../../services/reservation/reservation.service';
-import { UtilityService } from '../../services/utility/utility.service';
+import { ReservationService } from "../../services/reservation/reservation.service";
+import { UtilityService } from "../../services/utility/utility.service";
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css'],
-  providers: [ReservationService,UtilityService]
-
+  selector: "app-calendar",
+  templateUrl: "./calendar.component.html",
+  styleUrls: ["./calendar.component.css"],
+  providers: [ReservationService, UtilityService],
 })
 export class CalendarComponent implements OnInit {
   currentDate = new Date();
@@ -25,11 +24,11 @@ export class CalendarComponent implements OnInit {
 
   // Form props
   showForm = false;
-  mode: 'add' | 'delete' = 'add';
+  mode: "add" | "delete" = "add";
 
   // Selected Date
   selectedDate: Date = new Date();
-  selectedTenant: string = '';
+  selectedTenant: string = "";
   reservations: any;
 
   constructor(
@@ -39,10 +38,6 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.generateCalendar();
-
-    this.utility.dataChanged.subscribe(() => {
-      this.generateCalendar();
-    });
   }
 
   async generateCalendar() {
@@ -70,7 +65,7 @@ export class CalendarComponent implements OnInit {
       week.push({
         day: null,
         date: null,
-        tenant: '',
+        tenant: "",
         reserved: false,
       });
     }
@@ -84,30 +79,23 @@ export class CalendarComponent implements OnInit {
       endTimestamp
     );
 
-    console.log('Reservations', this.reservations);
-    console.log(
-      `Timestamps for ${this.monthName}`,
-      startTimestamp,
-      endTimestamp
-    );
-
     for (let i = 1; i <= numOfDays; i++) {
       const date = new Date(year, month, i);
 
       // Finding Reservation Matching with the date
-      let reservation = this.reservations? this.reservations.reserved.find(
-        (element: { time: number }) => {
-          return moment
-            .unix(Date.parse(date.toISOString()))
-            .isSame(moment.unix(element.time), 'day');
-        }
-      ): [];
+      let reservation = this.reservations
+        ? this.reservations.reserved.find((element: { time: number }) => {
+            return moment
+              .unix(Date.parse(date.toISOString()))
+              .isSame(moment.unix(element.time), "day");
+          })
+        : [];
 
       // Pushing reservations in week
       week.push({
         day: i,
         date: date,
-        tenant: reservation ? reservation.tennantName : '',
+        tenant: reservation ? reservation.tennantName : "",
         reserved: reservation ? true : false,
       });
 
@@ -125,7 +113,7 @@ export class CalendarComponent implements OnInit {
         week.push({
           day: null,
           date: null,
-          tenant: '',
+          tenant: "",
           reserved: false,
         });
       }
@@ -154,7 +142,7 @@ export class CalendarComponent implements OnInit {
   // Show Add form Handler
   onDateClick(date: any) {
     this.selectedDate = date.date;
-    this.mode = 'add';
+    this.mode = "add";
     this.showForm = true;
     this.handleOpen();
   }
@@ -163,7 +151,7 @@ export class CalendarComponent implements OnInit {
   onTenantClick(date: any) {
     this.selectedDate = date.date;
     this.selectedTenant = date.tenant;
-    this.mode = 'delete';
+    this.mode = "delete";
     this.handleOpen();
   }
 

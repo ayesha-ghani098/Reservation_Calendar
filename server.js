@@ -35,8 +35,6 @@ app.get("/reserve/:start/:end", function (request, response) {
   var start = parseInt(request.params.start);
   var end = parseInt(request.params.end);
 
-  console.log("start", start, "before", request.params.start);
-  console.log("end", end, "before", request.params.end);
 
   if (isNaN(start) || isNaN(end)) {
     response.status(400);
