@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="reservation-calendar">
+    <table>
+      <thead>
+        <tr>
+          <th (click)="previousMonth()" class="arrow">&lt;</th>
+          <th colspan="5">{{ monthName }} {{ year }}</th>
+          <th (click)="nextMonth()" class="arrow">&gt;</th>
+        </tr>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of calendar">
+          <td *ngFor="let date of week">
+            <div (click)="onDateClick(date)">
+              {{ date.tenant === "" ? date.day : "" }}
+            </div>
+            <div>
+              {{ date.tenant !== "" ? date.day : "" }}
+              <span (click)="onTenantClick(date)">{{
+                date.tenant !== "" ? date.tenant : ""
+              }}</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <!-- Stay Confirm and Cancel Form -->
+    <app-form
+      *ngIf="showForm"
+      [selectedDate]="selectedDate"
+      [selectedTenant]="selectedTenant"
+      [mode]="mode"
+      (closeForm)="handleClose()"
+      (generateCalendar)="(generateCalendar)"
+    ></app-form>
+
+    <!-- List of Reseved Days -->
+    <div class="list">
+      <h3>Reserved Days for {{ monthName }} {{ year }}</h3>
+      <div *ngFor="let reservation of reservations?.reserved">
+        <div>
+          Tennant Name: {{ reservation.tennantName }}
+          <span class="highlight"
+            >Stay Date: {{ reservation.time | date : "mediumDate" }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

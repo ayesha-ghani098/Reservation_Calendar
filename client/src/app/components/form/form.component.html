@@ -1,0 +1,15 @@
+<div class="form">
+  <div class="tenant-form" *ngIf="mode === 'add'">
+    <label for="tenant">Tenant Name:</label>
+    <input type="text" id="tenant" [(ngModel)]="tenant" name="tenant" />
+    <h2>Stay Date {{ selectedDate | date }}</h2>
+    <button (click)="addTenant()">Confirm Stay</button>
+  </div>
+</div>
+<div class="form">
+  <div #form class="tenant-form" *ngIf="mode === 'delete'">
+    <label for="tenant">Tenant Name: {{ selectedTenant }}</label>
+    <h2>Stay Date: {{ selectedDate | date }}</h2>
+    <button (click)="deleteTenant()">Cancel Stay</button>
+  </div>
+</div>
