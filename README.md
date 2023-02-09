@@ -3,6 +3,7 @@
 
 This repository contains a task to build reservation calendar. The project consists of two main components: an API server written in NodeJs provided, which implements various methods related to booking management; and a front-end website that allows customers to view available slots for making reservations in Angular Js 1.4.
 
+<br/>
 
 ## Installation
 
@@ -73,6 +74,8 @@ I was trying to run it concurrently that is why project structure is like this
 - A way to add tennants to a day.
 - A way to remove tennants from a day.
 - A clear README on how to set up and run your submission.
+
+
 ### Good to have
 - Feature to select multiple dates in one go.
 - Feature to show the names of the tennants on the days without clicking on the days on the calendar.
